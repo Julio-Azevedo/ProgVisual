@@ -31,14 +31,14 @@ document.addEventListener('click', function (e) {
 
 /* ---- BUSCA / CATÁLOGO ---- */
 const listings = [
-    { title: "Boosting Valorant — Ouro → Platina", game: "valorant", gameLabel: "Valorant", type: "boosting", seller: "Bianca F.", rating: 4.9, reviews: 312, price: "89,90", deadline: "2 dias", img: "../assets/valorant-rank.webp" },
-    { title: "Boosting Valorant — Prata → Ouro", game: "valorant", gameLabel: "Valorant", type: "boosting", seller: "EloRush", rating: 4.6, reviews: 140, price: "54,90", deadline: "1 dia", img: "../assets/valorant_icon.webp" },
-    { title: "Boosting Valorant — Duo com coach", game: "valorant", gameLabel: "Valorant", type: "boosting", seller: "Bianca F.", rating: 4.9, reviews: 312, price: "120,00", deadline: "3 dias", img: "../assets/valorant-rank.webp" },
-    { title: "Conta LoL — Nível 150, 40 skins", game: "lol", gameLabel: "League of Legends", type: "conta", seller: "RiftTrader", rating: 4.7, reviews: 98, price: "340,00", deadline: "Entrega imediata", img: "../assets/lol-account.jpg" },
-    { title: "Coaching CS2 — 1h individual", game: "cs2", gameLabel: "CS2", type: "coaching", seller: "Bianca F.", rating: 5.0, reviews: 54, price: "60,00", deadline: "Agendado", img: "../assets/CS2-Coaching.webp" },
-    { title: "Boosting CS2 — Prata → Águia", game: "cs2", gameLabel: "CS2", type: "boosting", seller: "HeadshotPro", rating: 4.8, reviews: 201, price: "75,00", deadline: "2 dias", img: "../assets/Cs2webp.webp" },
-    { title: "Conta Genshin Impact — AR 55", game: "genshin", gameLabel: "Genshin Impact", type: "conta", seller: "TravelerShop", rating: 4.5, reviews: 63, price: "410,00", deadline: "Entrega imediata", img: "../assets/genshin-impact.jpg" },
-    { title: "Conta Roblox — Robux + itens raros", game: "roblox", gameLabel: "Roblox", type: "conta", seller: "BlockTrade", rating: 4.4, reviews: 87, price: "45,00", deadline: "Entrega imediata", img: "../assets/roblox.webp" }
+    { title: "Boosting Valorant — Ouro → Platina", game: "valorant", gameLabel: "Valorant", type: "boosting", seller: "Bianca F.", rating: 4.9, reviews: 312, price: "89,90", deadline: "2 dias", img: "assets/valorant-rank.webp" },
+    { title: "Boosting Valorant — Prata → Ouro", game: "valorant", gameLabel: "Valorant", type: "boosting", seller: "EloRush", rating: 4.6, reviews: 140, price: "54,90", deadline: "1 dia", img: "assets/valorant_icon.webp" },
+    { title: "Boosting Valorant — Duo com coach", game: "valorant", gameLabel: "Valorant", type: "boosting", seller: "Bianca F.", rating: 4.9, reviews: 312, price: "120,00", deadline: "3 dias", img: "assets/valorant-rank.webp" },
+    { title: "Conta LoL — Nível 150, 40 skins", game: "lol", gameLabel: "League of Legends", type: "conta", seller: "RiftTrader", rating: 4.7, reviews: 98, price: "340,00", deadline: "Entrega imediata", img: "assets/lol-account.jpg" },
+    { title: "Coaching CS2 — 1h individual", game: "cs2", gameLabel: "CS2", type: "coaching", seller: "Bianca F.", rating: 5.0, reviews: 54, price: "60,00", deadline: "Agendado", img: "assets/CS2-Coaching.webp" },
+    { title: "Boosting CS2 — Prata → Águia", game: "cs2", gameLabel: "CS2", type: "boosting", seller: "HeadshotPro", rating: 4.8, reviews: 201, price: "75,00", deadline: "2 dias", img: "assets/Cs2webp.webp" },
+    { title: "Conta Genshin Impact — AR 55", game: "genshin", gameLabel: "Genshin Impact", type: "conta", seller: "TravelerShop", rating: 4.5, reviews: 63, price: "410,00", deadline: "Entrega imediata", img: "assets/genshin-impact.jpg" },
+    { title: "Conta Roblox — Robux + itens raros", game: "roblox", gameLabel: "Roblox", type: "conta", seller: "BlockTrade", rating: 4.4, reviews: 87, price: "45,00", deadline: "Entrega imediata", img: "assets/roblox.webp" }
 ];
 
 function performSearch(query) {
