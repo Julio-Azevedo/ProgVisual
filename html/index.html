@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GGMarket — Protótipo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <a href="#" onclick="go('home')" class="logo">
+            <div class="brand"><span class="dot"></span> GGMarket</div>
+        </a>
+        <nav class="top-nav">
+            <a onclick="go('home')" id="nav-home" class="active">Início</a>
+            <a onclick="go('catalog')" id="nav-catalog">Catálogo</a>
+            <a onclick="go('panelBuyer')" id="nav-panelBuyer">Meus Pedidos</a>
+            <a onclick="go('panelSeller')" id="nav-panelSeller">Painel do Vendedor</a>
+        </nav>
+        <div class="account-bar">
+            <button class="icon-btn" title="Transações" aria-label="Transações">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 3 21 7 17 11"></path>
+                    <path d="M21 7H9a4 4 0 0 0-4 4"></path>
+                    <path d="M7 21 3 17 7 13"></path>
+                    <path d="M3 17h12a4 4 0 0 0 4-4"></path>
+                </svg>
+            </button>
+            <button class="icon-btn" title="Mensagens" aria-label="Mensagens">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+            </button>
+            <button class="icon-btn" title="Notificações" aria-label="Notificações">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="badge">3</span>
+            </button>
+            <div class="profile-menu">
+                <button class="avatar-btn" onclick="toggleProfileMenu(event)" aria-label="Abrir perfil">
+                    <span class="avatar-circle">RM</span>
+                </button>
+                <div class="dropdown" id="profileDropdown">
+                    <div class="dropdown-header">
+                        <span class="avatar-circle small">RM</span>
+                        <div>
+                            <strong>Rafael M.</strong>
+                            <div class="dropdown-sub">Comprador &amp; Vendedor</div>
+                        </div>
+                    </div>
+                    <a onclick="go('panelBuyer'); closeProfileMenu();">🛒 Meus Pedidos</a>
+                    <a onclick="go('panelSeller'); closeProfileMenu();">🏪 Painel do Vendedor</a>
+                    <a onclick="closeProfileMenu();">⚙️ Configurações da conta</a>
+                    <a onclick="closeProfileMenu();">↩ Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main>
+
+        <!-- home -->
+        <section id="home" class="screen visible">
+            <div class="hero">
+                <h1>Compre contas e serviços com segurança.</h1>
+                <p>Boosting, coaching e contas para os seus jogos favoritos, com vendedores avaliados e garantia de entrega.</p>
+                <div class="search-bar">
+                    <input type="text" id="home-search" placeholder="ex. Valorant, CS, LOL" onkeydown="if(event.key==='Enter') performSearch(this.value)">
+                    <button class="btn" onclick="performSearch(document.getElementById('home-search').value)">Buscar</button>
+                </div>
+            </div>
+
+            <!-- Categorias -->
+            <div class="section-title">Categorias Populares</div>
+            <div class="cat-grid">
+                <div class="cat-card" onclick="performSearch('valorant')">
+                    <img src="../assets/valorant_icon.webp" alt="logo Valorant" class="icon">
+                </div>
+                <div class="cat-card" onclick="performSearch('cs2')">
+                    <img src="../assets/Cs2webp.webp" alt="logo CS2" class="icon">
+                </div>
+                <div class="cat-card" onclick="performSearch('lol')">
+                    <img src="../assets/leagueoflegends.jpg" alt="logo League of Legends" class="icon">
+                </div>
+                <div class="cat-card" onclick="performSearch('roblox')">
+                    <img src="../assets/roblox.webp" alt="logo Roblox" class="icon">
+                </div>
+                <div class="cat-card" onclick="performSearch('genshin')">
+                    <img src="../assets/genshin-impact.jpg" alt="logo Genshin Impact" class="icon">
+                </div>
+            </div>
+            <!-- Vendedores bem avaliados -->
+            <div class="section-title">Vendedores bem avaliados</div>
+            <div class="card-grid">
+                <div class="listing-card" onclick="go('listing')">
+                    <div class="thumb">
+                        <img src="../assets/valorant-rank.webp" alt="valorant-rank-icon">
+                    </div>
+                    <h3>Boosting Valorant — Ouro → Platina</h3>
+                    <div class="seller">por Bianca F. <span class="rating">★ 4.9 (312)</span></div>
+                    <div class="price-row"><span class="price">R$ 89,90</span><button class="btn small secondary">Ver</button></div>
+                </div>
+                <div class="listing-card" onclick="go('listing')">
+                    <div class="thumb">
+                        <img src="../assets/lol-account.jpg" alt="league-of-legends-account">
+                    </div>
+                    <h3>Conta LoL — Nível 150, 40 skins</h3>
+                    <div class="seller">por RiftTrader <span class="rating">★ 4.7 (98)</span></div>
+                    <div class="price-row"><span class="price">R$ 340,00</span><button class="btn small secondary">Ver</button></div>
+                </div>
+                <div class="listing-card" onclick="go('listing')">
+                    <div class="thumb">
+                        <img src="../assets/CS2-Coaching.webp" alt="cs2-coaching">
+                    </div>
+                    <h3>Coaching CS2 — 1h individual</h3>
+                    <div class="seller">por Bianca F. <span class="rating">★ 5.0 (54)</span></div>
+                    <div class="price-row"><span class="price">R$ 60,00</span><button class="btn small secondary">Ver</button></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- catalog -->
+        <section id="catalog" class="screen">
+            <div class="crumb"><span onclick="go('home')">Início</span> / Catálogo</div>
+            <div class="catalog-search-bar">
+                <input type="text" id="catalog-search" placeholder="Buscar por jogo, serviço ou vendedor..." oninput="applyFilters()">
+            </div>
+            <div class="catalog-layout">
+                <aside class="filters">
+                    <div class="group">
+                        <h4>Jogo</h4>
+                        <label><input type="checkbox" data-filter="game" value="valorant" onchange="applyFilters()"> Valorant</label>
+                        <label><input type="checkbox" data-filter="game" value="lol" onchange="applyFilters()"> League of Legends</label>
+                        <label><input type="checkbox" data-filter="game" value="cs2" onchange="applyFilters()"> CS2</label>
+                        <label><input type="checkbox" data-filter="game" value="genshin" onchange="applyFilters()"> Genshin Impact</label>
+                        <label><input type="checkbox" data-filter="game" value="roblox" onchange="applyFilters()"> Roblox</label>
+                    </div>
+                    <div class="group">
+                        <h4>Tipo</h4>
+                        <label><input type="checkbox" data-filter="type" value="boosting" onchange="applyFilters()"> Boosting</label>
+                        <label><input type="checkbox" data-filter="type" value="conta" onchange="applyFilters()"> Conta</label>
+                        <label><input type="checkbox" data-filter="type" value="coaching" onchange="applyFilters()"> Coaching</label>
+                    </div>
+                    <div class="group">
+                        <h4>Faixa de preço</h4>
+                        <label><input type="radio" name="price"> Até R$ 50</label>
+                        <label><input type="radio" name="price"> R$ 50 – R$ 150</label>
+                        <label><input type="radio" name="price"> Acima de R$ 150</label>
+                    </div>
+                    <div class="group">
+                        <h4>Nota mínima do vendedor</h4>
+                        <label><input type="radio" name="rating"> ★ 4.5+</label>
+                        <label><input type="radio" name="rating"> ★ 4.0+</label>
+                    </div>
+                    <button class="btn secondary small" style="width:100%;" onclick="clearFilters()">Limpar filtros</button>
+                </aside>
+                <div>
+                    <div class="results-heading" id="results-heading">8 resultados</div>
+                    <div class="card-grid" id="catalog-results"></div>
+                    <div id="empty-state" class="empty-state" style="display:none;">
+                        <p>Nenhum resultado encontrado.</p>
+                        <p style="color:var(--text-dim); font-size:0.85rem;">Tente buscar por outro termo, como "valorant", "cs" ou "lol".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LISTING DETAIL -->
+        <section id="listing" class="screen">
+            <div class="crumb"><span onclick="go('home')">Início</span> / <span onclick="go('catalog')">Catálogo</span> / Boosting Valorant</div>
+            <div class="listing-detail">
+                <div>
+                    <div class="gallery"></div>
+                    <h2>Boosting Valorant — Ouro → Platina</h2>
+                    <p style="color:var(--text-dim); margin:10px 0 20px;">Serviço de elevação de rank feito por jogador Radiante, sem uso de programas ilícitos. Sessões gravadas para sua segurança. Entrega em até 2 dias.</p>
+
+                    <div class="section-title" style="margin-top:0;">Avaliações (312)</div>
+                    <div class="review">
+                        <div class="stars">★★★★★</div>Entrega rápida e comunicação clara durante todo o processo.
+                    </div>
+                    <div class="review">
+                        <div class="stars">★★★★★</div>Já é a segunda vez que compro, confio bastante no vendedor.
+                    </div>
+                </div>
+                <div class="seller-box">
+                    <div class="row">
+                        <div class="avatar"></div>
+                        <div><strong>Bianca F.</strong><br><span class="rating">★ 4.9 · 312 avaliações</span></div>
+                    </div>
+                    <div class="stat-line"><span>Prazo de entrega</span><span>2 dias</span></div>
+                    <div class="stat-line"><span>Pedidos concluídos</span><span>870</span></div>
+                    <div class="stat-line"><span>Taxa de resposta</span><span>98%</span></div>
+                    <div style="margin-top:18px; display:flex; justify-content:space-between; align-items:center;">
+                        <span class="price" style="font-size:1.5rem;">R$ 89,90</span>
+                    </div>
+                    <button class="btn" style="width:100%; margin-top:14px;" onclick="go('checkout')">Contratar serviço</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHECKOUT -->
+        <section id="checkout" class="screen">
+            <div class="crumb"><span onclick="go('home')">Início</span> / <span onclick="go('listing')">Anúncio</span> / Checkout</div>
+            <h2 style="margin-bottom:20px;">Finalizar pedido</h2>
+            <div class="checkout-layout">
+                <div>
+                    <h3 style="font-size:1rem; margin-bottom:12px; color:var(--text-dim);">Forma de pagamento</h3>
+                    <div class="pay-option selected"><input type="radio" name="pay" checked> Pix (aprovação imediata)</div>
+                    <div class="pay-option"><input type="radio" name="pay"> Cartão de crédito</div>
+
+                    <h3 style="font-size:1rem; margin:24px 0 12px; color:var(--text-dim);">Informações da conta a ser boostada</h3>
+                    <div class="field"><label>Usuário/Riot ID</label><input type="text" placeholder="Rafael#BR1"></div>
+                    <div class="field"><label>Observações para o vendedor (opcional)</label><textarea rows="3" placeholder="Ex: prefiro sessões à noite"></textarea></div>
+                </div>
+                <div class="summary-box">
+                    <h3 style="font-size:1rem; margin-bottom:14px;">Resumo</h3>
+                    <div class="row"><span>Boosting Ouro → Platina</span><span>R$ 89,90</span></div>
+                    <div class="row"><span>Taxa de serviço</span><span>R$ 4,50</span></div>
+                    <div class="row" style="border-top:1px solid var(--card-border); padding-top:12px;"><span class="total">Total</span><span class="total">R$ 94,40</span></div>
+                    <button class="btn" style="width:100%; margin-top:16px;" onclick="go('confirmation')">Confirmar pagamento</button>
+                    <p style="font-size:0.75rem; color:var(--text-dim); margin-top:10px;">🔒 Pagamento retido até a conclusão do serviço.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIRMATION -->
+        <section id="confirmation" class="screen">
+            <div style="text-align:center; padding:60px 20px;">
+                <div style="font-size:3rem;">✅</div>
+                <h2 style="margin-top:12px;">Pedido confirmado!</h2>
+                <p style="color:var(--text-dim); margin-top:8px;">Seu boosting foi enviado ao vendedor. Acompanhe o andamento no seu painel.</p>
+                <button class="btn" style="margin-top:24px;" onclick="go('panelBuyer')">Ir para Meus Pedidos</button>
+            </div>
+        </section>
+
+        <!-- PAINEL COMPRADOR -->
+        <section id="panelBuyer" class="screen">
+            <h2 style="margin-bottom:20px;">Meus Pedidos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serviço</th>
+                        <th>Vendedor</th>
+                        <th>Status</th>
+                        <th>Valor</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Boosting Valorant Ouro→Platina</td>
+                        <td>Bianca F.</td>
+                        <td><span class="status andamento">Em andamento</span></td>
+                        <td>R$ 94,40</td>
+                        <td class="order-actions">
+                            <a onclick="go('confirmation')" style="color:var(--accent);">Ver</a>
+                            <a onclick="openChat('Bianca F.', 'Boosting Valorant Ouro→Platina')" style="color:var(--accent);">💬 Chat</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Coaching CS2 — 1h</td>
+                        <td>Bianca F.</td>
+                        <td><span class="status concluido">Concluído</span></td>
+                        <td>R$ 60,00</td>
+                        <td class="order-actions">
+                            <a style="color:var(--accent);">Avaliar</a>
+                            <a onclick="openChat('Bianca F.', 'Coaching CS2 — 1h')" style="color:var(--accent);">💬 Chat</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Conta LoL Nível 150</td>
+                        <td>RiftTrader</td>
+                        <td><span class="status concluido">Concluído</span></td>
+                        <td>R$ 340,00</td>
+                        <td class="order-actions">
+                            <a style="color:var(--accent);">Avaliar</a>
+                            <a onclick="openChat('RiftTrader', 'Conta LoL Nível 150')" style="color:var(--accent);">💬 Chat</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- CHAT COM VENDEDOR -->
+        <section id="chat" class="screen">
+            <div class="crumb"><span onclick="go('panelBuyer')">Meus Pedidos</span> / Chat</div>
+            <div class="chat-box">
+                <div class="chat-header">
+                    <div class="avatar"></div>
+                    <div>
+                        <strong id="chat-seller-name">Vendedor</strong>
+                        <div class="dropdown-sub" id="chat-order-title">Pedido</div>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input-row">
+                    <input type="text" id="chat-input" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+                    <button class="btn" onclick="sendChatMessage()">Enviar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAINEL VENDEDOR -->
+        <section id="panelSeller" class="screen">
+            <h2 style="margin-bottom:20px;">Painel do Vendedor</h2>
+
+            <div class="balance-card">
+                <div style="color:var(--text-dim); font-size:0.85rem;">Saldo disponível</div>
+                <div class="value">R$ 1.240,50</div>
+                <button class="btn small" style="margin-top:10px;">Solicitar saque</button>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="sellerTab('orders', this)">Pedidos</button>
+                <button class="tab-btn" onclick="sellerTab('ads', this)">Meus Anúncios</button>
+                <button class="tab-btn" onclick="sellerTab('newad', this)">Novo Anúncio</button>
+            </div>
+
+            <div id="seller-orders" class="seller-tab">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Serviço</th>
+                            <th>Status</th>
+                            <th>Prazo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rafael M.</td>
+                            <td>Boosting Valorant Ouro→Platina</td>
+                            <td><span class="status andamento">Em andamento</span></td>
+                            <td>1 dia restante</td>
+                            <td><a style="color:var(--accent);">Atualizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Diego S.</td>
+                            <td>Coaching CS2</td>
+                            <td><span class="status andamento">Em andamento</span></td>
+                            <td>Hoje</td>
+                            <td><a style="color:var(--accent);">Atualizar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Larissa T.</td>
+                            <td>Boosting Duo</td>
+                            <td><span class="status concluido">Concluído</span></td>
+                            <td>—</td>
+                            <td><a style="color:var(--accent);">Ver</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="seller-ads" class="seller-tab" style="display:none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Anúncio</th>
+                            <th>Preço</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Boosting Valorant Ouro→Platina</td>
+                            <td>R$ 89,90</td>
+                            <td><span class="status concluido">Ativo</span></td>
+                            <td><a style="color:var(--accent);">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Coaching CS2 — 1h</td>
+                            <td>R$ 60,00</td>
+                            <td><span class="status concluido">Ativo</span></td>
+                            <td><a style="color:var(--accent);">Editar</a></td>
+                        </tr>
+                        <tr>
+                            <td>Conta antiga Valorant</td>
+                            <td>R$ 150,00</td>
+                            <td><span class="status pausado">Pausado</span></td>
+                            <td><a style="color:var(--accent);">Editar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="seller-newad" class="seller-tab" style="display:none;">
+                <div class="form-grid">
+                    <div class="field"><label>Jogo</label>
+                        <select>
+                            <option>Valorant</option>
+                            <option>League of Legends</option>
+                            <option>CS2</option>
+                        </select>
+                    </div>
+                    <div class="field"><label>Tipo</label>
+                        <select>
+                            <option>Boosting</option>
+                            <option>Coaching</option>
+                            <option>Conta</option>
+                            <option>Item</option>
+                        </select>
+                    </div>
+                    <div class="field"><label>Preço (R$)</label><input type="text" placeholder="Ex: 89,90"></div>
+                </div>
+
+                <div class="form-grid full">
+                    <div class="field">
+                        <label>Forma de entrega</label>
+                        <div class="delivery-mode-options">
+                            <label class="delivery-mode-option selected" id="mode-scheduled-label">
+                                <input type="radio" name="deliveryMode" value="scheduled" checked onchange="toggleDeliveryMode(this)">
+                                <div>
+                                    <strong>Prazo programado</strong>
+                                    <div class="dropdown-sub">Você define um prazo (ex: 2 dias) e entrega manualmente depois da compra.</div>
+                                </div>
+                            </label>
+                            <label class="delivery-mode-option" id="mode-instant-label">
+                                <input type="radio" name="deliveryMode" value="instant" onchange="toggleDeliveryMode(this)">
+                                <div>
+                                    <strong>⚡ Entrega imediata (dinâmica)</strong>
+                                    <div class="dropdown-sub">Assim que o pagamento é aprovado, os dados cadastrados abaixo são enviados automaticamente ao comprador pelo chat.</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-grid full" id="scheduled-deadline-field">
+                    <div class="field"><label>Prazo de entrega</label><input type="text" id="deadline-input" placeholder="Ex: 2 dias"></div>
+                </div>
+
+                <div class="form-grid full" id="instant-delivery-field" style="display:none;">
+                    <div class="field">
+                        <label>Mensagem automática de entrega</label>
+                        <div class="dropdown-sub" style="margin-bottom:8px;">Preencha os dados que serão enviados automaticamente ao comprador via chat assim que o pedido for pago. Ex: login, senha, código, e-mail de acesso.</div>
+                        <textarea rows="5" id="instant-message-input" placeholder="Ex:&#10;Login: usuario123&#10;Senha: ********&#10;E-mail vinculado: conta@email.com&#10;Instruções adicionais: ...">Login: 
+Senha: 
+E-mail vinculado: 
+Instruções adicionais: </textarea>
+                    </div>
+                    <div class="chat-preview">
+                        <div class="dropdown-sub" style="margin-bottom:6px;">Pré-visualização no chat do comprador:</div>
+                        <div class="chat-msg received instant-preview">
+                            <span class="instant-badge">⚡ Entrega automática</span>
+                            <div id="instant-preview-text">Login:
+                                Senha:
+                                E-mail vinculado:
+                                Instruções adicionais: </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-grid full">
+                    <div class="field"><label>Descrição</label><textarea rows="4" placeholder="Descreva o serviço, o que está incluso e como funciona."></textarea></div>
+                </div>
+                <button class="btn" onclick="alert('Anúncio publicado (simulação).'); sellerTab('ads', document.querySelectorAll('.tab-btn')[1]);">Publicar anúncio</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>Protótipo de média fidelidade — GGMarket</footer>
+
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <pattern id="gamePattern" x="0" y="0" width="240" height="240" patternUnits="userSpaceOnUse">
+
+      <!-- Controle (gamepad) -->
+      <g transform="translate(15,20) rotate(-6)" fill="none" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.16">
+        <path d="M20 30 
+                 C20 18, 32 12, 46 12 
+                 L94 12 
+                 C108 12, 120 18, 120 30 
+                 L124 55 
+                 C127 70, 118 82, 105 80 
+                 C97 79, 92 74, 88 68 
+                 C84 61, 78 58, 70 58 
+                 L70 58 
+                 C62 58, 56 61, 52 68 
+                 C48 74, 43 79, 35 80 
+                 C22 82, 13 70, 16 55 
+                 Z"/>
+        <!-- d-pad -->
+        <line x1="38" y1="34" x2="38" y2="48"/>
+        <line x1="31" y1="41" x2="45" y2="41"/>
+        <!-- buttons -->
+        <circle cx="103" cy="34" r="3.5"/>
+        <circle cx="112" cy="43" r="3.5"/>
+        <circle cx="94" cy="43" r="3.5"/>
+        <circle cx="103" cy="52" r="3.5"/>
+        <!-- sticks -->
+        <circle cx="55" cy="30" r="6"/>
+        <circle cx="85" cy="30" r="6"/>
+      </g>
+
+      <!-- Headset -->
+      <g transform="translate(150,140) rotate(4)" fill="none" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.14">
+        <path d="M8 40 C8 15, 28 -2, 50 -2 C72 -2, 92 15, 92 40"/>
+        <rect x="2" y="38" width="16" height="26" rx="7"/>
+        <rect x="82" y="38" width="16" height="26" rx="7"/>
+        <path d="M18 58 C18 74, 30 84, 44 86"/>
+        <circle cx="47" cy="87" r="3"/>
+      </g>
+
+      <!-- Joystick -->
+      <g transform="translate(178,15) rotate(-10)" fill="none" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.13">
+        <rect x="0" y="34" width="46" height="30" rx="6"/>
+        <line x1="23" y1="34" x2="23" y2="6"/>
+        <circle cx="23" cy="2" r="6"/>
+        <circle cx="12" cy="49" r="3"/>
+        <circle cx="34" cy="49" r="3"/>
+      </g>
+
+      <!-- Troféu / conquista -->
+      <g transform="translate(40,150) rotate(8)" fill="none" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.15">
+        <path d="M6 4 H34 V18 C34 28, 26 34, 20 34 C14 34, 6 28, 6 18 Z"/>
+        <path d="M6 8 C-2 8, -2 20, 6 20"/>
+        <path d="M34 8 C42 8, 42 20, 34 20"/>
+        <line x1="20" y1="34" x2="20" y2="42"/>
+        <line x1="12" y1="48" x2="28" y2="48"/>
+      </g>
+
+      <!-- raio / energia -->
+      <g transform="translate(205,90)" fill="none" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.12">
+        <path d="M10 0 L0 20 L8 20 L2 38 L22 14 L13 14 Z"/>
+      </g>
+
+      <!-- linhas decorativas soltas -->
+      <path d="M120 110 q10 -8 20 0" fill="none" stroke="#7F5AF0" stroke-width="1.5" stroke-linecap="round" opacity="0.10"/>
+      <path d="M0 100 q10 8 20 0" fill="none" stroke="#7F5AF0" stroke-width="1.5" stroke-linecap="round" opacity="0.10"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="1200" fill="#121018"/>
+  <rect width="1200" height="1200" fill="url(#gamePattern)"/>
+</svg>
